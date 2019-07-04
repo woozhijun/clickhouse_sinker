@@ -72,7 +72,7 @@ See config [example](./conf/config.json)
 
 ```
 type Parser interface {
-        Parse(bs []byte) model.Metric
+	Parse(bs []byte) IParser
 }
 ```
 See impls [json parser](./service/parser/parser.go)
