@@ -6,20 +6,20 @@ import (
 	"os"
 	"runtime/pprof"
 
-	"github.com/housepower/clickhouse_sinker/creator"
-	"github.com/housepower/clickhouse_sinker/task"
 	_ "github.com/kshvakov/clickhouse"
+	"github.com/woozhijun/clickhouse_sinker/creator"
+	"github.com/woozhijun/clickhouse_sinker/service/task"
 
 	"github.com/wswz/go_commons/app"
 )
 
 var (
-	config     string
+	conf     string
 	cpuprofile = flag.String("cpuprofile", "", "write cpu profile to file")
 )
 
 func init() {
-	flag.StringVar(&config, "conf", "", "config dir")
+	flag.StringVar(&conf, "conf", "", "config dir")
 
 	flag.Parse()
 }
@@ -39,7 +39,7 @@ func main() {
 	}
 
 	app.Run("clickhouse_sinker", func() error {
-		cfg = *creator.InitConfig(config)
+		cfg = *creator.InitConfig(conf)
 		runner = NewSinker(cfg)
 		return runner.Init()
 	}, func() error {

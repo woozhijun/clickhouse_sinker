@@ -69,4 +69,4 @@ type Parser interface {
 	Parse(bs []byte) model.Metric
 }
 ```
-See [json parser](./parser/json.go)
+See [json parser](service/parser/json.go)
