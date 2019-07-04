@@ -2,6 +2,11 @@
 
 clickhouse_sinker is a sinker program that consumes kafka message and import them to [ClickHouse](https://clickhouse.yandex/).
 
+## Upgrading
+* support gson parser date/datetime, you can config time.format layout
+* support data schema alias
+
+
 ## Features
 
 * Easy to use and deploy, you don't need write any hard code, just care about the configuration file
