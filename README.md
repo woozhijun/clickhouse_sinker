@@ -5,6 +5,7 @@ clickhouse_sinker is a sinker program that consumes kafka message and import the
 ## Upgrading
 * support gson parser date/datetime, you can config time.format layout
 * support data schema alias
+* upgrading project package
 
 
 ## Features
@@ -58,7 +59,7 @@ go build -o clickhouse_sinker bin/main.go
 * [x] Float32, Float64
 * [x] String
 * [x] FixedString
-* [x] DateTime (UInt32), Date(UInt16)
+* [x] @deprecated DateTime (UInt32), Date(UInt16)
 
 
 ## Configuration
@@ -71,7 +72,7 @@ See config [example](./conf/config.json)
 
 ```
 type Parser interface {
-	Parse(bs []byte) model.Metric
-}
+        Parse(bs []byte) model.Metric
+
 ```
-See [json parser](service/parser/json.go)
+See [json parser](./service/parser.go)
