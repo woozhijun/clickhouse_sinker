@@ -1,8 +1,8 @@
 {
   "clickhouse": {
     "ch1": {
-      "db": "default",
-      "host": "172.27.138.8",
+      "db": "nxlog_shard",
+      "host": "clickhouse15",
       "dnsLoop" : false,
       "maxLifeTime": 300,
       "password": "",
@@ -12,7 +12,7 @@
   },
   "kafka": {
     "kfk1": {
-      "brokers": "172.27.138.8:9092",
+      "brokers": "kafka01:9092",
       "sasl": {
         "password": "",
         "username": ""

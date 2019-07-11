@@ -1,6 +1,10 @@
-module github.com/housepower/clickhouse_sinker
+module github.com/woozhijun/clickhouse_sinker
 
-go 1.12
+replace (
+	golang.org/x/crypto v0.0.0-20180820150726-614d502a4dac => github.com/golang/crypto v0.0.0-20180820150726-614d502a4dac
+	golang.org/x/net v0.0.0-20180821023952-922f4815f713 => github.com/golang/net v0.0.0-20180826012351-8a410e7b638d
+	golang.org/x/text v0.3.0 => github.com/golang/text v0.3.0
+)
 
 require (
 	github.com/DataDog/zstd v1.4.0 // indirect
@@ -18,7 +22,7 @@ require (
 	github.com/mattn/go-colorable v0.1.1 // indirect
 	github.com/mattn/go-isatty v0.0.7 // indirect
 	github.com/pierrec/lz4 v0.0.0-20190507090305-b8e3f78e075c // indirect
-	github.com/smartystreets/goconvey v0.0.0-20190330032615-68dc04aab96a // indirect
+	github.com/smartystreets/goconvey v0.0.0-20190330032615-68dc04aab96a
 	github.com/stretchr/testify v1.3.0
 	github.com/tidwall/gjson v1.1.3
 	github.com/tidwall/match v1.0.0 // indirect
@@ -26,3 +30,5 @@ require (
 	golang.org/x/net v0.0.0-20190501004415-9ce7a6920f09 // indirect
 	golang.org/x/sys v0.0.0-20190429190828-d89cdac9e872 // indirect
 )
+
+go 1.12

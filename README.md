@@ -2,6 +2,12 @@
 
 clickhouse_sinker is a sinker program that consumes kafka message and import them to [ClickHouse](https://clickhouse.yandex/).
 
+## Upgrading
+* support gson parser date/datetime, you can config time.format layout
+* support data schema alias
+* upgrading project package
+
+
 ## Features
 
 * Easy to use and deploy, you don't need write any hard code, just care about the configuration file
@@ -53,7 +59,7 @@ go build -o clickhouse_sinker bin/main.go
 * [x] Float32, Float64
 * [x] String
 * [x] FixedString
-* [x] DateTime (UInt32), Date(UInt16)
+* [x] @deprecated DateTime (UInt32), Date(UInt16)
 
 
 ## Configuration
@@ -66,7 +72,7 @@ See config [example](./conf/config.json)
 
 ```
 type Parser interface {
-	Parse(bs []byte) model.Metric
+	Parse(bs []byte) IParser
 }
 ```
-See [json parser](./parser/json.go)
+See impls [json parser](./service/parser/parser.go)

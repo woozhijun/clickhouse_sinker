@@ -1,0 +1,50 @@
+{	
+
+	"name" : "nxlog",
+
+	"kafka": "kfk1",
+	"topic": "nxlog",
+	"consumerGroup" : "sink2ch.nginx",
+
+	"parser" : "json",
+	"clickhouse" : "ch1",
+		
+	"tableName" : "maimai_access_local",
+	
+	"itemSchemas" : [
+		{"name" : "datetime" , "type" : "DateTime", "alias": "time_iso8601", "layout": "2006-01-02T15:04:05+08:00"},
+		{"name" : "remote_addr" , "type" : "String"},
+		{"name" : "remote_user" , "type" : "String"},
+		{"name" : "msec" , "type" : "String"},
+		{"name" : "scheme" , "type" : "String"},
+		{"name" : "host" , "type" : "String"},
+		{"name" : "request_method" , "type" : "String"},
+		{"name" : "request_uri" , "type" : "String"},
+		{"name" : "server_name" , "type" : "String"},
+		{"name" : "server_port" , "type" : "String"},
+		{"name" : "server_protocol" , "type" : "String"},
+		{"name" : "status" , "type" : "String"},
+		{"name" : "bytes_sent" , "type" : "UInt64"},
+		{"name" : "body_bytes_sent" , "type" : "UInt64"},
+		{"name" : "request_time" , "type" : "Float32"},
+		{"name" : "upstream" , "type" : "String"},
+		{"name" : "upstream_connect_time" , "type" : "Float32"},
+		{"name" : "upstream_header_time" , "type" : "Float32"},
+		{"name" : "upstream_response_time" , "type" : "Float32"},
+		{"name" : "upstream_response_length" , "type" : "UInt32"},
+		{"name" : "upstream_status" , "type" : "String"},
+		{"name" : "upstream_cache_status" , "type" : "String"},
+		{"name" : "http_referer" , "type" : "String"},
+		{"name" : "http_user_agent" , "type" : "String"},
+		{"name" : "http_x_forwarded_for" , "type" : "String"},
+		{"name" : "upstream_addr" , "type" : "String"},
+		{"name" : "web_uid" , "type" : "String"},
+		{"name" : "request_length" , "type" : "UInt32"},
+		{"name" : "http_x_maimai_reqid" , "type" : "String"},
+		{"name" : "teapot" , "type" : "String"},
+		{"name" : "intime" , "type" : "DateTime", "alias": "_CURRENT_", "layout": "2006-01-02 15:04:05"}
+	],
+
+	"bufferSize" : 50000,
+	"num" : 1
+}
