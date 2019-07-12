@@ -11,6 +11,8 @@ func NewParser(typ string) parser.Parser {
 	switch typ {
 	case "json", "gjson":
 		return &GjsonParser{}
+	case "mmlog_v3":
+		return &MMlogV3Parser{}
 	default:
 		return &GjsonParser{}
 	}

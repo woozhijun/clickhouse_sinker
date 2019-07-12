@@ -44,10 +44,6 @@ type ClickHouse struct {
 	dms   []string
 }
 
-func convertAliasValue()  {
-	
-}
-
 // NewClickHouse new a clickhouse instance
 func NewClickHouse() *ClickHouse {
 	return &ClickHouse{}
