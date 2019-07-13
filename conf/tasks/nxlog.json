@@ -7,7 +7,7 @@
 	"consumerGroup" : "sink2ch.nginx",
 
 	"parser" : "json",
-	"clickhouse" : "ch1",
+	"clickhouse" : "ch_nxlog",
 		
 	"tableName" : "maimai_access_local",
 	

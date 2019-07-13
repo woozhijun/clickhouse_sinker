@@ -47,7 +47,7 @@ func TestDate(t *testing.T) {
 
 	Convey("check output datetime", t, func() {
 
-		d := util.StringParseToDate("2019-07-04T19:00:00+08:00", "2006-01-02T15:04:05+08:00")
+		d := util.StringParseToDate("2019-07-12T19:00:01.010557+08:00", "2006-01-02T15:04:05+08:00")
 		println(d.In(time.FixedZone("UTC", -8*60*60)).Format(util.LayoutDatetime))
 		println(d.UTC().Format(util.LayoutDatetime))
 		log.Info(time.Now().UTC().Format(util.LayoutDatetime))
