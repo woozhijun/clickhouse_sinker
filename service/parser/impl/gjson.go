@@ -47,7 +47,10 @@ func (c *GjsonMetric) GetInt(key string) int64 {
 
 func (c *GjsonMetric) GetDate(key string, layout string) string {
 	if key == "_CURRENT_" {
-		return time.Now().UTC().Format(layout)
+		return time.Now().UTC().Format(util.LayoutDatetime)
+	}
+	if layout == "" {
+		return util.UnixParseToDate(gjson.Get(c.raw, key).String()).UTC().Format(util.LayoutDatetime)
 	}
 	date := util.StringParseToDate(gjson.Get(c.raw, key).String(), layout)
 	return date.In(time.FixedZone("UTC", -8*60*60)).Format(util.LayoutDatetime)
