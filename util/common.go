@@ -1,7 +1,7 @@
 package util
 
 import (
-	"github.com/prometheus/common/log"
+	"github.com/wswz/go_commons/log"
 	"time"
 )
 
