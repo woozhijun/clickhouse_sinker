@@ -76,5 +76,8 @@ func (c *MMlogV3Metric) GetDate(key string, layout string) string {
 		return util.UnixParseToDate(c.chooseGjsonResult(key).String()).UTC().Format(util.LayoutDatetime)
 	}
 	date := util.StringParseToDate(c.chooseGjsonResult(key).String(), layout)
+	if layout == util.LayoutDate {
+		return date.UTC().Format(util.LayoutDate)
+	}
 	return date.In(time.FixedZone("UTC", -8*60*60)).Format(util.LayoutDatetime)
 }

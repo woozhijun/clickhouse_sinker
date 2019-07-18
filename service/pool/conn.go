@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"math/rand"
 	"sync"
+	"time"
 
 	"github.com/wswz/go_commons/log"
 )
@@ -31,7 +32,7 @@ func (c *Connection) ReConnect() error {
 
 var poolMaps = map[string][]*Connection{}
 
-func SetDsn(name string, dsn string) {
+func SetDsn(name string, dsn string, maxLifeTime time.Duration) {
 	lock.Lock()
 	defer lock.Unlock()
 
@@ -39,18 +40,19 @@ func SetDsn(name string, dsn string) {
 	if err != nil {
 		panic(err)
 	}
-
+	sqlDB.SetConnMaxLifetime(maxLifeTime * time.Second)
+	setConnectionParams(sqlDB)
 	if ps, ok := poolMaps[name]; ok {
 		//达到最大限制了，不需要新建conn
 		if len(ps) >= connNum {
 			return
 		}
-		log.Info("clickhouse dsn", dsn)
 		ps = append(ps, &Connection{sqlDB, dsn})
 		poolMaps[name] = ps
 	} else {
 		poolMaps[name] = []*Connection{&Connection{sqlDB, dsn}}
 	}
+	log.Info(">>>. Set clickhouse dsn success.")
 }
 
 func GetConn(name string) *Connection {
@@ -59,6 +61,11 @@ func GetConn(name string) *Connection {
 
 	ps := poolMaps[name]
 	return ps[rand.Intn(len(ps))]
+}
+
+func setConnectionParams(db *sql.DB) {
+	db.SetMaxOpenConns(36)
+	db.SetMaxIdleConns(12)
 }
 
 func CloseAll() {

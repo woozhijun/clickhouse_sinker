@@ -47,6 +47,7 @@ type ClickHouseConfig struct {
 	Username    string
 	Password    string
 	MaxLifeTime int
+	DsnParams   string
 	DnsLoop     bool
 }
 

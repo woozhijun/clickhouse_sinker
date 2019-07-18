@@ -53,5 +53,8 @@ func (c *GjsonMetric) GetDate(key string, layout string) string {
 		return util.UnixParseToDate(gjson.Get(c.raw, key).String()).UTC().Format(util.LayoutDatetime)
 	}
 	date := util.StringParseToDate(gjson.Get(c.raw, key).String(), layout)
+	if layout == util.LayoutDate {
+		return date.UTC().Format(util.LayoutDate)
+	}
 	return date.In(time.FixedZone("UTC", -8*60*60)).Format(util.LayoutDatetime)
 }

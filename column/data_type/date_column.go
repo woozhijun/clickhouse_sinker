@@ -27,6 +27,5 @@ func (c *DateColumn) GetValue(val interface{}) interface{} {
 	case string:
 		return val.(string)
 	}
-	println(val)
 	return ""
 }
